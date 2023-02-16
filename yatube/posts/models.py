@@ -26,7 +26,11 @@ class Post(models.Model):
     )
     group = models.ForeignKey(
         Group,
-        on_delete=models.CASCADE,
+        related_name='posts',
+        on_delete=models.SET_NULL,
         blank=True,
         null=True,
     )
+
+    class Meta:
+        ordering = ['-pub_date', ]
